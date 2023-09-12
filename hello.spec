@@ -1,22 +1,15 @@
-# norootforbuild
-
 Name: suse-hello
-BuildRequires: gcc
-BuildRequires: make
-BuildRequires: elfutils-libelf-devel
-BuildRequires: kmodtool
-BuildRequires: kernel-rpm-macros
-
-# Required to support secure-boot: Include sles-release in order to determine
-# service-pack version
-License: GPL-2.0-only
-Group: System/Kernel
-Summary: Sample Kernel Module Package
-Version: 1.0
+Version: 0.0.0
 Release: 0
+Summary: Sample Kernel Module Package
+
+Group: System/Kernel
+License: GPL-2.0-only
 Source0: main.c
 Source1: Kbuild
-BuildRoot: %{_tmppath}/%{name}-%{version}-build
+#BuildRoot: %%{_tmppath}/%%{name}-%%{version}-build
+
+BuildRequires: kernel-rpm-macros
 
 %kernel_module_package
 
@@ -58,11 +51,5 @@ for flavor in %flavors_to_build; do
 done
 
 %changelog
-* Fri Apr 27 2017 – andavis@suse.com
-- Typo fixes; remove excluded flavors from kernel_module_package macro line
-* Wed Apr 24 2013 - mmarek@suse.cz
-- Sign the module by a supplied keypair.
-* Tue Dec 22 2008 - andavis@suse.com
-- Updated to reflect CODE 11 changes and LF standard spec file work.
-* Sat Jan 28 2006 - agruen@suse.de
-- Initial package.
+* Tue Sep 12 2023 - Robert Joslyn <robert_joslyn@selinc.com> 0.0.0
+- Initial spec file
